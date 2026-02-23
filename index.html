@@ -1,0 +1,863 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco de Questões Exclusivo - Carreiras Policiais | Emanuel Araújo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a237e;
+            --secondary: #ffc107;
+            --accent: #00bcd4;
+            --dark: #0d1642;
+            --light: #f5f5f5;
+            --success: #4caf50;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--dark);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,193,7,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            animation: slideDown 0.8s ease-out;
+            box-shadow: 0 10px 30px rgba(255,193,7,0.3);
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        h1 span {
+            color: var(--secondary);
+            display: block;
+            position: relative;
+        }
+
+        h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .subtitle strong {
+            color: var(--secondary);
+        }
+
+        .police-badge {
+            width: 120px;
+            height: 120px;
+            margin: 2rem auto;
+            background: linear-gradient(145deg, var(--secondary), #ff8f00);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 20px 60px rgba(255,193,7,0.4);
+            animation: float 3s ease-in-out infinite;
+            border: 4px solid white;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .price-container {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .old-price {
+            font-size: 1.5rem;
+            text-decoration: line-through;
+            color: rgba(255,255,255,0.6);
+            text-decoration-color: #ff5252;
+            text-decoration-thickness: 3px;
+        }
+
+        .new-price {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--secondary);
+            text-shadow: 0 4px 20px rgba(255,193,7,0.5);
+            margin: 0.5rem 0;
+        }
+
+        .price-note {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(145deg, #00c853, #00e676);
+            color: white;
+            padding: 1.5rem 4rem;
+            font-size: 1.3rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 15px 40px rgba(0,200,83,0.4);
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0,200,83,0.6);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 2rem;
+            background: white;
+            color: var(--dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            color: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            color: var(--dark);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .content-text h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .content-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .subjects-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .subjects-list li {
+            padding: 0.8rem 1rem;
+            background: white;
+            border-radius: 10px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .subjects-list li:hover {
+            transform: translateX(10px);
+            background: var(--primary);
+            color: white;
+        }
+
+        .subjects-list li::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: 900;
+        }
+
+        .subjects-list li:hover::before {
+            color: var(--secondary);
+        }
+
+        .mockup-container {
+            position: relative;
+        }
+
+        .mockup {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+            transform: rotate(-3deg);
+            transition: transform 0.3s ease;
+        }
+
+        .mockup:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .mockup-header {
+            background: var(--primary);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .mockup-content {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .question-sample {
+            font-size: 0.9rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .answer-box {
+            background: #e8f5e9;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--success);
+        }
+
+        .answer-box strong {
+            color: var(--success);
+        }
+
+        /* Social Proof */
+        .social-proof {
+            padding: 5rem 2rem;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--secondary);
+            display: block;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+            opacity: 0.9;
+        }
+
+        /* Guarantee Section */
+        .guarantee {
+            padding: 5rem 2rem;
+            background: white;
+            color: var(--dark);
+        }
+
+        .guarantee-box {
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(145deg, #e8f5e9, #c8e6c9);
+            padding: 3rem;
+            border-radius: 30px;
+            text-align: center;
+            border: 3px solid var(--success);
+            position: relative;
+        }
+
+        .guarantee-badge {
+            width: 100px;
+            height: 100px;
+            background: var(--success);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin: -80px auto 1rem;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(76,175,80,0.3);
+        }
+
+        .guarantee h3 {
+            font-size: 2rem;
+            color: var(--success);
+            margin-bottom: 1rem;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,193,7,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .final-cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .urgency {
+            background: rgba(255,82,82,0.2);
+            border: 2px solid #ff5252;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            display: inline-block;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            color: #ff8a80;
+        }
+
+        /* Footer / Credits */
+        .credits {
+            padding: 4rem 2rem;
+            background: #0a0f2c;
+            text-align: center;
+            border-top: 3px solid var(--secondary);
+        }
+
+        .credits-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .credits h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .credits p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: #25d366;
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(37,211,102,0.3);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(37,211,102,0.5);
+            background: #128c7e;
+        }
+
+        .signature {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .signature p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .signature span {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .subjects-list {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-container {
+                gap: 2rem;
+            }
+
+            .stat-number {
+                font-size: 3rem;
+            }
+        }
+
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: float-particle 10s infinite;
+        }
+
+        @keyframes float-particle {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.5; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">🔥 Oferta Exclusiva</div>
+            <h1>
+                Banco de Questões
+                <span>Exclusivo</span>
+            </h1>
+            <p class="subtitle">
+                Para <strong>Carreiras Policiais</strong> • PM • PC • PP • GCM
+            </p>
+
+            <div class="police-badge">👮</div>
+
+            <div class="price-container">
+                <div class="old-price">De R$ 39,90</div>
+                <div class="new-price">R$ 17,99</div>
+                <div class="price-note">Acesso Imediato • Pagamento Único</div>
+            </div>
+
+            <a href="https://pay.kiwify.com.br/UsrlmzG" class="cta-button">
+                Quero Garantir Minha Aprovação →
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">O Que Você Vai Receber</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>240 Questões Comentadas</h3>
+                    <p>Cada questão acompanha gabarito detalhado com explicações claras e objetivas, facilitando seu aprendizado.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Conforme as Bancas</h3>
+                    <p>Questões elaboradas seguindo o padrão AOCP, FGV, IBFC e CEBRASPE - as principais bancas do país.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Acesso Imediato</h3>
+                    <p>Receba o material em PDF instantaneamente após a confirmação do pagamento. Estude onde e quando quiser.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>100% Digital</h3>
+                    <p>Compatível com celular, tablet e computador. Leve seu material de estudo para qualquer lugar.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>Aprendizado Acelerado</h3>
+                    <p>Gabaritos comentados que ensinam a raciocinar como a banca, não apenas memorizar respostas.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Investimento Imbatível</h3>
+                    <p>Menos de R$ 0,08 por questão comentada. O melhor custo-benefício do mercado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="content-grid">
+                <div class="content-text">
+                    <h2>Conteúdo Completo e Atualizado</h2>
+                    <p>
+                        Nosso banco de questões cobre todos os temas essenciais para sua aprovação. 
+                        Cada questão foi cuidadosamente selecionada para refletir o que realmente cai nos concursos.
+                    </p>
+                    <p>
+                        <strong>Disciplinas incluídas:</strong>
+                    </p>
+                    <ul class="subjects-list">
+                        <li>Português</li>
+                        <li>Raciocínio Lógico</li>
+                        <li>Noções de Informática</li>
+                        <li>Direito Constitucional</li>
+                        <li>Direito Penal</li>
+                        <li>Direitos Humanos</li>
+                        <li>Legislação Específica</li>
+                        <li>Lei de Execução Penal</li>
+                    </ul>
+                </div>
+                <div class="mockup-container">
+                    <div class="mockup">
+                        <div class="mockup-header">
+                            📖 Banco de Questões Exclusivo
+                        </div>
+                        <div class="mockup-content">
+                            <div class="question-sample">
+                                <strong>Questão 1:</strong> Leia o texto: "A tecnologia transformou a forma como nos comunicamos, mas também trouxe desafios como a disseminação de fake news." Sobre o texto, é CORRETO afirmar que:
+                            </div>
+                            <div class="answer-box">
+                                <strong>✓ Gabarito: C</strong><br>
+                                A transformação é positiva, mas com desafios.<br><br>
+                                <em>Comentário: O texto apresenta um contraste entre o aspecto positivo (transformação da comunicação) e o negativo (fake news), indicando que há benefícios e desafios.</em>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="social-proof">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Números que Comprovam</h2>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-number">240</span>
+                    <span class="stat-label">Questões Comentadas</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">8</span>
+                    <span class="stat-label">Matérias Cobertas</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">Bancas Diferentes</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Digital e Acessível</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee -->
+    <section class="guarantee">
+        <div class="container">
+            <div class="guarantee-box">
+                <div class="guarantee-badge">✓</div>
+                <h3>Garantia de Satisfação</h3>
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #555;">
+                    Confiamos tanto na qualidade do nosso material que oferecemos garantia. 
+                    Se você não ficar satisfeito com o conteúdo, entre em contato conosco. 
+                    <strong>Seu investimento está protegido.</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="comprar">
+        <div class="final-cta-content">
+            <div class="urgency">⚠️ Preço promocional por tempo limitado</div>
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Não Deixe para Depois!</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">
+                Cada dia de estudo conta para sua aprovação. Comece a preparação agora com material de qualidade.
+            </p>
+
+            <div class="price-container" style="max-width: 400px; margin: 0 auto 2rem;">
+                <div class="old-price">De R$ 39,90</div>
+                <div class="new-price">R$ 17,99</div>
+                <div class="price-note">Pagamento único • Acesso vitalício</div>
+            </div>
+
+            <a href="https://pay.kiwify.com.br/UsrlmzG" class="cta-button" style="font-size: 1.5rem; padding: 1.5rem 3rem;">
+                Comprar Agora →
+            </a>
+
+            <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.7;">
+                Pagamento 100% seguro • Acesso imediato • Suporte por email
+            </p>
+        </div>
+    </section>
+
+    <!-- Credits / Footer -->
+    <section class="credits">
+        <div class="credits-content">
+            <h3>🚀 Precisa de Soluções Digitais para seu Negócio?</h3>
+            <p>
+                Se você chegou até aqui, provavelmente entendeu o poder de uma página de vendas bem estruturada. 
+                Imagine o que podemos fazer pelo SEU negócio. 
+                Desenvolvo páginas de alta conversão, identidade visual e estratégias digitais 
+                que transformam visitantes em clientes.
+            </p>
+
+            <a href="https://wa.me/5561992560713?text=Olá! Vi a página do Banco de Questões e fiquei impressionado com a qualidade. Gostaria de conversar sobre soluções digitais para meu negócio. Podemos agendar uma call?" 
+               class="contact-btn" 
+               target="_blank">
+                <span>💬</span>
+                Falar no WhatsApp
+            </a>
+
+            <div class="signature">
+                <p>Emanuel Araújo</p>
+                <span>Página feita por Emanuel Araújo • Especialista em Soluções Digitais</span>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 20; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 10 + 's';
+            particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Add scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .stat-item, .mockup').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
