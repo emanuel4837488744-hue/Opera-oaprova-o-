@@ -906,50 +906,82 @@
             line-height: 1.4;
         }
 
-        .quiz-feedback {
-            margin-top: 1.5rem;
-            padding: 1rem;
-            border-radius: 12px;
-            display: none;
-        }
+      /* ========== FEEDBACK DO QUIZ - ESTILO CORRIGIDO ========== */
+.quiz-feedback {
+    margin-top: 1.5rem;
+    padding: 0.25rem; /* Espaço para efeito de borda */
+    border-radius: 16px; /* Bordas bem arredondadas */
+    display: none;
+}
 
-        .quiz-feedback.show {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
+.quiz-feedback.show {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
 
-        .feedback-correct {
-            background: rgba(0, 230, 118, 0.1);
-            border: 1px solid var(--success);
-        }
+/* Caixa interna - correta ou incorreta */
+.feedback-correct,
+.feedback-incorrect {
+    border-radius: 14px; /* Bordas arredondadas internas */
+    padding: 1rem 1.25rem; /* Espaçamento interno generoso */
+    border: 1px solid;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Sombra suave */
+    backdrop-filter: blur(10px); /* Efeito glass sutil */
+}
 
-        .feedback-incorrect {
-            background: rgba(255, 82, 82, 0.1);
-            border: 1px solid var(--danger);
-        }
+/* Estilo para resposta CORRETA */
+.feedback-correct {
+    background: linear-gradient(135deg, rgba(0, 230, 118, 0.2), rgba(0, 200, 83, 0.1));
+    border-color: var(--success);
+    border-left: 4px solid var(--success); /* Detalhe lateral */
+}
 
-        .feedback-title {
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+/* Estilo para resposta INCORRETA */
+.feedback-incorrect {
+    background: linear-gradient(135deg, rgba(255, 82, 82, 0.2), rgba(244, 67, 54, 0.1));
+    border-color: var(--danger);
+    border-left: 4px solid var(--danger); /* Detalhe lateral */
+}
 
-        .feedback-correct .feedback-title {
-            color: var(--success);
-        }
+/* Título do feedback */
+.feedback-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: white;
+}
 
-        .feedback-incorrect .feedback-title {
-            color: var(--danger);
-        }
+.feedback-correct .feedback-title {
+    color: var(--success);
+}
 
-        .feedback-text {
-            font-size: 0.85rem;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.9);
-        }
+.feedback-incorrect .feedback-title {
+    color: var(--danger);
+}
+
+/* Texto explicativo - bem enquadrado */
+.feedback-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.95);
+    text-align: left; /* Texto alinhado à esquerda */
+    padding-left: 0.3rem; /* Pequeno recuo para melhor leitura */
+}
+
+/* Animação de entrada suave */
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(10px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
 
         .quiz-footer {
             padding: 1rem 1.5rem;
